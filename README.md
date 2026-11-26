@@ -14,7 +14,7 @@ Lanternは、短編小説やSSをスマートフォンで書くためのAndroid�
 ![ライブラリ](brand/screenshots/library.png)
 ![画像出力の設定](brand/screenshots/image-export.png)
 
-Android 10以降に対応します。署名済みの初回リリースは準備中です。
+Android 10以降に対応します。[最新版のAPKをダウンロード](https://github.com/sider51/Lantern/releases/latest)してインストールできます。
 
 原稿は初期状態でアプリ内に保存され、Androidのフォルダ選択から保存先を変更できます。アプリ自体はオフラインで動作します。端末変更やアプリ削除の前には、別の場所へバックアップを保存してください。Androidのシステムバックアップは無効です。
 

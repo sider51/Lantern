@@ -14,7 +14,7 @@ Lantern is an Android writing app for Japanese short fiction and fan fiction. Wr
 ![Library](brand/screenshots/library.png)
 ![Image export settings](brand/screenshots/image-export.png)
 
-Requires Android 10 or later. A signed release is being prepared. No release APK is available yet.
+Requires Android 10 or later. Download the APK from the [latest release](https://github.com/sider51/Lantern/releases/latest).
 
 Drafts are stored locally by default. A user-selected folder can be used through Android's storage picker. Export backups to a separate location before removing the app or changing devices. Android system backup is disabled.
 
