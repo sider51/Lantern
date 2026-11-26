@@ -2,21 +2,45 @@
 
 [English](README.en.md)
 
-<img src="brand/Lantern.png" alt="Lantern" width="160">
+<img src="brand/Lantern.png" alt="Lanternのロゴ" width="128">
 
-Lanternは、短編小説やSSをスマートフォンで書くためのAndroidアプリです。原稿を整理し、pixivやXなどへの投稿に向けてテキストや画像を用意できます。
+Lanternは、短編小説やSSをスマートフォンで書き、投稿の準備までできるAndroidアプリです。ルビや傍点を付けながら執筆し、原稿をフォルダで整理して、pixivやXなどに向けたテキストや画像を書き出せます。
 
-- ルビ、傍点、太字、斜体、改ページに対応
-- 自動保存、Undo・Redo、入力補助バー
-- 階層フォルダ、検索、ゴミ箱、バックアップ
-- 投稿向けのテキスト出力と、横書き・縦書きの画像出力
+## ダウンロード
 
-![ライブラリ](brand/screenshots/library.png)
-![画像出力の設定](brand/screenshots/image-export.png)
+[GitHub Releasesから最新版のAPKをダウンロード](https://github.com/sider51/Lantern/releases/latest)できます。対応環境は **Android 10以降** です。
 
-Android 10以降に対応します。[最新版のAPKをダウンロード](https://github.com/sider51/Lantern/releases/latest)してインストールできます。
+## できること
 
-原稿は初期状態でアプリ内に保存され、Androidのフォルダ選択から保存先を変更できます。アプリ自体はオフラインで動作します。端末変更やアプリ削除の前には、別の場所へバックアップを保存してください。Androidのシステムバックアップは無効です。
+### 執筆
+
+- タイトルがなくても書き始められる横書きエディタ
+- ルビ、傍点、太字、斜体、改ページ
+- 自動保存、元に戻す・やり直す、文字数表示、編集位置の復元
+- 記号・書式・編集操作を切り替えられる入力補助バーと、括弧の補完
+- 本文のフォント、文字サイズ、行間、左右余白の調整
+- Android標準のキーボードとスペルチェックに対応
+
+### 原稿の管理
+
+- Inboxと階層フォルダによる整理、原稿の移動・複製・検索・並び替え
+- 複数選択や、左右スワイプに割り当てる操作の設定
+- ゴミ箱からの復元と、保持期間の設定
+- 原稿・フォルダ・設定のバックアップと復元、原稿JSONの読み込み・書き出し
+
+### テキスト出力
+
+プレーンテキスト、pixiv、X、カクヨム、小説家になろう、ハーメルン、エブリスタ向けに出力できます。プレビューで確認してからコピー・共有でき、タイトルの追加や字下げ、空行の整理も選べます。投稿先が対応していない書式は装飾を除き、本文を保持します。
+
+### 画像出力
+
+横書き・縦書きの原稿画像をプレビューし、PNGまたはJPEGで保存・共有できます。ルビや傍点、自動・手動改ページに対応し、フォント、文字サイズ、字間、行間、余白、色、解像度を調整できます。カスタムフォントや透かし、出力設定のプリセットも利用できます。
+
+## 保存とバックアップ
+
+原稿は初期状態でアプリ内に保存されます。Androidのフォルダ選択を使い、指定フォルダを保存先にすることもできます。Lantern自体はオフラインで動作します。
+
+Androidのシステムバックアップは無効です。**機種変更やアプリのアンインストールの前に、アプリのバックアップ機能で外部へ保存し、バックアップファイルを確認してください。** アンインストールするとアプリ内のデータは削除されます。
 
 ## ビルド
 
@@ -27,12 +51,12 @@ JDK 17、Android SDK Platform 37.1、Build-Tools 36.0.0を用意し、`JAVA_HOME
 .\gradlew.bat :app:assembleRelease
 ```
 
-Debug APKは `app/build/outputs/apk/debug/app-debug.apk` に生成されます。Release APKには別途正式な署名が必要です。
+Debug APKは `app/build/outputs/apk/debug/app-debug.apk` に生成されます。Releaseビルドの署名には `LANTERN_KEYSTORE`、`LANTERN_STORE_PASSWORD`、`LANTERN_KEY_ALIAS`、`LANTERN_KEY_PASSWORD` を環境変数として設定します。鍵とパスワードは安全に保管し、リポジトリに含めないでください。
 
-正式署名には既存の鍵を安全な場所に保管し、`LANTERN_KEYSTORE`、`LANTERN_STORE_PASSWORD`、`LANTERN_KEY_ALIAS`、`LANTERN_KEY_PASSWORD` をビルド時の環境変数として設定します。鍵とパスワードはリポジトリへ含めないでください。
+Debug版と正式版の署名が異なる場合は上書きインストールできません。先にバックアップを外部へ保存・確認し、Debug版をアンインストールしてから正式版をインストールし、バックアップを復元してください。
 
-Debug版と正式版の署名が異なる場合、上書きインストールできません。先にアプリのバックアップを外部に保存し、バックアップを確認してからDebug版をアンインストールし、正式版をインストールして復元してください。アンインストールするとアプリ内データは削除されます。
+## ライセンスとお問い合わせ
 
-[プライバシー](PRIVACY.md) · [第三者ライセンス](THIRD_PARTY_NOTICES.md) · [不具合の報告](https://github.com/sider51/Lantern/issues)
+ソースコードは[MIT License](LICENSE)で提供しています。公式ロゴとブランド素材は対象外で、権利を留保します。詳しくは[ブランド素材の権利](BRAND_LICENSE.md)と[第三者ライセンス](THIRD_PARTY_NOTICES.md)をご覧ください。
 
-ソースコードは [MIT License](LICENSE) です。公式ロゴとブランド素材は対象外で、権利を留保します。対象範囲は [ブランド素材の権利](BRAND_LICENSE.md) を参照してください。
+[プライバシー](PRIVACY.md) · [不具合の報告・要望](https://github.com/sider51/Lantern/issues)
