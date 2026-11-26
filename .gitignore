@@ -1,0 +1,16 @@
+/.gradle/
+/.kotlin/
+/.toolchain/
+/.idea/
+/local.properties
+**/build/
+*.iml
+*.jks
+*.keystore
+*.apk
+*.aab
+*.p12
+*.pfx
+*.pem
+/.vscode/
+/docs/phase-*.md
