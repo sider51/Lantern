@@ -245,6 +245,7 @@ internal fun LanternLicensesScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     SettingsLayout(stringResource(R.string.licenses), onBack) {
         for ((name, file) in listOf(
+            "Lantern — MIT License" to "lantern-mit.txt",
             "AndroidX, Kotlin, kotlinx" to "apache-2.0.txt",
             "Noto Sans JP" to "noto-sans-jp-ofl.txt",
             "Noto Serif JP" to "noto-serif-jp-ofl.txt",

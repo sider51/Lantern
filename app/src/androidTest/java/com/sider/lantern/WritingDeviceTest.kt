@@ -21,6 +21,29 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class WritingDeviceTest {
+    @Test fun paletteDefaultPreservesExistingAndBackedUpChoices() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val file = File(context.cacheDir, "palette-${UUID.randomUUID()}.preferences_pb")
+        val job = Job()
+        val store = PreferenceDataStoreFactory.create(scope = CoroutineScope(Dispatchers.IO + job)) { file }
+        try {
+            val fresh = WritingPreferences(store, defaultLantern = true)
+            val existing = WritingPreferences(store)
+            assertTrue(fresh.customization.first().lantern)
+            assertFalse(existing.customization.first().lantern)
+            assertEquals("lantern", fresh.backup()["palette"])
+            fresh.restore(mapOf("palette" to "dynamic"))
+            assertFalse(fresh.customization.first().lantern)
+            fresh.restore(mapOf("palette" to "lantern"))
+            assertTrue(fresh.customization.first().lantern)
+            fresh.restore(mapOf("appearance" to "system"))
+            assertFalse(fresh.customization.first().lantern)
+        } finally {
+            job.cancelAndJoin()
+            file.delete()
+        }
+    }
+
     @Test fun nativeCompletionDistinguishesCompositionAndKeepsSingleStepHistory() {
         ActivityScenario.launch(MainActivity::class.java).use { scenario ->
             scenario.onActivity { activity ->

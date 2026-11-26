@@ -35,4 +35,4 @@ Debug版と正式版の署名が異なる場合、上書きインストールで
 
 [プライバシー](PRIVACY.md) · [第三者ライセンス](THIRD_PARTY_NOTICES.md) · [不具合の報告](https://github.com/sider51/Lantern/issues)
 
-Lantern本体のソフトウェアライセンスは未決定です。
+ソースコードは [MIT License](LICENSE) です。公式ロゴとブランド素材は対象外で、権利を留保します。対象範囲は [ブランド素材の権利](BRAND_LICENSE.md) を参照してください。

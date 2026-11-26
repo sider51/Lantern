@@ -55,6 +55,7 @@ class MainActivity : ComponentActivity() {
         if (!localePrefs.contains("initialized")) {
             val firstInstall = !base.getDatabasePath("lantern.db").exists() && !localePrefs.contains("language")
             if (firstInstall) {
+                localePrefs.edit { putBoolean("new_default_lantern", true) }
                 if (Build.VERSION.SDK_INT >= 33) {
                     val manager = base.getSystemService(LocaleManager::class.java)
                     if (manager.applicationLocales.isEmpty) manager.applicationLocales = LocaleList.forLanguageTags("ja")

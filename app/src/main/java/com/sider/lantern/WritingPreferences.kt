@@ -33,7 +33,7 @@ internal data class SavedEditorPosition(val caret: Int, val scroll: Int) {
     fun selectionIn(body: String): EditorPosition = graphemeOffset(body, caret).let { EditorPosition(it, it) }
 }
 
-internal class WritingPreferences(private val store: DataStore<Preferences>) {
+internal class WritingPreferences(private val store: DataStore<Preferences>, private val defaultLantern: Boolean = false) {
     private val categoryKey = stringPreferencesKey("toolbar_category")
     private val data = store.data.catch {
         if (it is IOException) emit(emptyPreferences()) else throw it
@@ -49,7 +49,7 @@ internal class WritingPreferences(private val store: DataStore<Preferences>) {
 
     val customization = data.map { values ->
         Customization(
-            lantern = values[stringPreferencesKey("palette")] == "lantern",
+            lantern = values[stringPreferencesKey("palette")]?.let { it == "lantern" } ?: defaultLantern,
             showRecent = values[stringPreferencesKey("show_recent")] != "false",
             left = SwipeAction.from(values[stringPreferencesKey("swipe_left")]),
             right = SwipeAction.from(values[stringPreferencesKey("swipe_right")]),
@@ -91,11 +91,13 @@ internal class WritingPreferences(private val store: DataStore<Preferences>) {
             backedUpKeys.forEach { key ->
                 values[stringPreferencesKey(key)]?.let { put(key, it) }
             }
+            if ("palette" !in this) put("palette", if (defaultLantern) "lantern" else "dynamic")
         }
     }
 
     suspend fun restore(settings: Map<String, String>) {
         store.edit { values ->
+            if ("palette" !in settings && settings.isNotEmpty()) values[stringPreferencesKey("palette")] = "dynamic"
             WritingSetting.entries.forEach { setting ->
                 settings[setting.preference.name]?.toBooleanStrictOrNull()?.let { values[setting.preference] = it }
             }

@@ -37,7 +37,9 @@ internal class LanternModel(application: Application) : AndroidViewModel(applica
     private val database = LibraryDatabase.open(application)
     val library = LibraryRepository(database, external = ExternalLibrary(application))
     val recovery = DraftRecovery(File(application.filesDir, "draft-checkpoints"))
-    val writing = WritingPreferences(application.writingDataStore)
+    val writing = WritingPreferences(application.writingDataStore,
+        application.getSharedPreferences("locale", android.content.Context.MODE_PRIVATE)
+            .getBoolean("new_default_lantern", false))
     val writingOptions = writing.options.stateIn(viewModelScope, SharingStarted.Eagerly, null)
     val writingCategory = writing.category.stateIn(viewModelScope, SharingStarted.Eagerly, null)
     val customization = writing.customization.stateIn(viewModelScope, SharingStarted.Eagerly, Customization())

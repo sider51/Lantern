@@ -22,4 +22,4 @@ Install JDK 17 and Android SDK Platform 37.1 and Build-Tools 36.0.0, set `JAVA_H
 
 For release signing, supply an existing key using `LANTERN_KEYSTORE`, `LANTERN_STORE_PASSWORD`, `LANTERN_KEY_ALIAS`, and `LANTERN_KEY_PASSWORD` as environment variables. Keep the key and passwords outside the repository. If an installed debug build has a different signature, first export and verify a backup, then uninstall the debug build, install the signed release, and restore the backup. Uninstalling removes app-local data.
 
-See [privacy](PRIVACY.md), [third-party notices](THIRD_PARTY_NOTICES.md), and [issues](https://github.com/sider51/Lantern/issues). The Lantern source license has not been chosen.
+See [privacy](PRIVACY.md), [third-party notices](THIRD_PARTY_NOTICES.md), and [issues](https://github.com/sider51/Lantern/issues). Source code is available under the [MIT License](LICENSE). Official logos and brand assets are excluded and all rights are reserved as described in [BRAND_LICENSE.md](BRAND_LICENSE.md).
